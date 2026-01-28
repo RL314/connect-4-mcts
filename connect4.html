@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title> Connect Four - Play</title>
+		
+		<link rel="stylesheet" href="connect4.css">
+		<script defer src="utils.js"></script>
+		<script defer src="connect4.js"></script>
+	</head>
+	
+	<body>
+		<main id="main-container">
+			<div id="main-flex">
+				<div id="game-board">
+				</div>
+				<div id="option-board">
+					<form id="option-form">
+						<h1>Options</h1>
+						<div>
+							<label for="show-MCTS-result"><input type="checkbox" checked id="show-MCTS-result"></input>Shows last MCTS results</label>
+						</div>
+						<ul>
+							<li>
+								<label for="player-first"><input type="radio" name="first-move" id="player-first" value="0" checked></input>player goes first</label>
+							</li>
+							<li>
+								<label for="player-second"><input type="radio" name="first-move" id="player-second" value="1"></input>player goes second</label>
+							</li>
+						</ul>
+						<button type="button" id="new-game-btn">new game</button>
+					</form>
+				</div>
+			</div>
+			
+		</main>
+	
+		<div id="clone-templates" class="template">
+			<!-- This <div> was added to display MCTSdiv; <svg> cannot display a <div> properly -->
+			<div class="slot-container">
+				<svg width="52" height="52" version="1.1" xmlns="http://www.w3.org/2000/svg" class="slot-svg">
+					<circle cx="50%" cy="50%" r="50%" stroke="transparent" fill="white"  class="slot" data-occupant="null"/>
+				</svg>
+			</div>	
+		</div>
+			
+			<!-- This plug-in filter adds an inset shadow to a the <circle>/pieces. 
+					 https://css-tricks.com/adding-shadows-to-svg-icons-with-css-and-svg-filters/
+					 filter will not apply (as if cannot find the filter(?), the slots got filled) if it is display:none)-->
+			<svg height="0" width="0">
+				<filter id='inset-shadow'>
+					<!-- Shadow offset -->
+					<feOffset dx='1' dy='1'/>
+
+					<!-- Shadow blur -->
+					<feGaussianBlur stdDeviation='5' result='offset-blur'/>
+
+					<!-- Invert drop shadow to make an inset shadow -->
+					<feComposite operator='out' in='SourceGraphic' in2='offset-blur' result='inverse'/>
+					
+					<!-- Cut color inside shadow -->
+					<feFlood flood-color='black' flood-opacity='.95' result='color'/>
+					<feComposite operator='in' in='color' in2='inverse' result='shadow'/>
+
+					<!-- Placing shadow over element -->
+					<feComposite operator='over' in='shadow' in2='SourceGraphic'/>
+				</filter>
+			</svg>
+
+	</body>
+
+</html>

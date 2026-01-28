@@ -1,0 +1,134 @@
+:root {
+	font-family: arial, sans-serif;
+	font-size: 18px;
+}
+#main-container {
+	max-width: 900px;
+	width: max-content;
+	margin: 54px auto 54px;
+	
+	border: 1px solid #ddd;
+	border-radius: 32px;
+	box-shadow: 2px 2px 2px 1px #cacaca;
+	padding: 54px;
+}
+#main-flex {
+	display: flex;
+	flex-flow: row nowrap;
+	width: fit-content;
+	column-gap: 24px;
+}
+	#game-board {
+		display: grid;
+		grid-auto-flow: column;
+		grid-template-rows: repeat(6, min-content);
+		grid-template-columns: repeat(7, min-content);
+		width: fit-content;
+		min-width: fit-content;
+		grid-gap: 18px;
+		padding: 18px;
+		border-radius: 25px;
+		
+		background-color: #f4a929;
+		box-shadow: 0 19px 4px -1px #cacaca;
+	}
+	#option-board {
+		align-self: stretch;
+		width: 280px;
+		padding: 1.25rem;
+		
+		background-color: AliceBlue;
+		border: 1px solid LightCyan;
+	}
+		#option-form {
+			position: relative;
+			height: 100%;
+			
+			padding: 1px;
+		}
+			h1 {
+				width: max-content;
+				margin: .25em auto .5em;
+				font-size: 2rem;
+				font-family: consolas, arial, sans-serif;
+			}
+			form > div {
+				margin-bottom: 1.5em;
+			}
+			form > ul {
+				margin: 0;
+				margin-left: .5em;
+				padding: 0;
+				list-style: none;
+				margin-bottom: 1.5em;
+			}
+				form label {
+					display: block;
+					margin-bottom: .5em;
+				}
+				form input[type="checkbox"], form input[type="radio"] {
+					margin-right: 6px;
+				}
+			button {
+				position: absolute;
+				bottom: 1em;
+				left: 50%;
+				transform: translateX(-50%);
+				padding: 3px 4px;
+			}
+
+		
+
+.template {
+	display: none;
+}
+
+
+div.slot-container{
+	position: relative;
+	width: fit-content;
+	height: fit-content;
+}
+	svg > circle[data-occupant] {
+		filter: url(#inset-shadow); /* appreciate the CSS url() referencing an HTML element */
+	}
+	svg > circle[data-occupant="null"] {
+		cursor: pointer;
+	}
+	svg > circle[data-occupant="null"]:not(.pseudoHover) {
+		filter: unset;
+	}
+	svg > circle[data-occupant="null"].pseudoHover {
+		fill: red;
+	}
+	svg > circle[data-occupant = "0"]{
+		fill: red;
+	}
+	svg > circle[data-occupant = "1"]{
+		fill: green;
+	}
+
+
+div.mctsDisplay{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	
+	font-size: 12px;
+	font-family: consolas, courier new, monospace;
+	
+	background-color: rgba(255, 255, 255, 0.4);
+}
+
+
+.displayNone{
+	display: none;
+}
+
+
+
+
+
+
+
